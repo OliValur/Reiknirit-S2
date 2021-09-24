@@ -1,5 +1,9 @@
 package s2;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
+import edu.princeton.cs.algs4.StdDraw;
+
 import java.util.Comparator;
 
 /*************************************************************************
@@ -36,8 +40,16 @@ public class Point implements Comparable<Point> {
 
     // slope between this point and that point
     public double slopeTo(Point that) {
-        // TODO: Implement this
-        return 0;
+        if (this.x == that.x && this.y == that.y) {
+            return Double.NEGATIVE_INFINITY;
+        }
+        if (this.y == that.y) {
+            return 0.0;
+        }
+        if (this.x == that.x) {
+            return Double.POSITIVE_INFINITY;
+        }
+        return (double) (that.y - this.y) / (that.x - this.x);
     }
 
     /**
@@ -45,8 +57,14 @@ public class Point implements Comparable<Point> {
      * y-coordinates and breaking ties by x-coordinates
      */
     public int compareTo(Point that) {
-        // TODO: Implement this
-        return 0;
+        if (this.y < that.y) {
+            return -1;
+        }
+        if (this.y == that.y && this.x < that.x) {
+            return -1;
+        }
+        return 1;
+
     }
 
     // return string representation of this point
@@ -59,7 +77,7 @@ public class Point implements Comparable<Point> {
         /*
          * Do not modify
          */
-        In in = new In();
+        In in = new In("input_from_S2_main_1");
         Out out = new Out();
         int n = in.readInt();
         Point[] points = new Point[n];
