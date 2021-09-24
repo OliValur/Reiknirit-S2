@@ -67,20 +67,21 @@ public class Point implements Comparable<Point> {
         return (double) (that.y - this.y) / (that.x - this.x);
     }
 
+
     /**
      * Is this point lexicographically smaller than that one? comparing
      * y-coordinates and breaking ties by x-coordinates
      */
     public int compareTo(Point that) {
-        if (this.y < that.y) {
-            return -1;
-        }
-        if (this.y == that.y && this.x < that.x) {
-            return -1;
-        }
-        return 1;
 
+        if ((this.y < that.y) || (this.x < that.x && this.y == that.y))
+            return -1;
+        else if (this.y == that.y && this.x == that.x)
+            return 0;
+        else
+            return 1;
     }
+
 
     // return string representation of this point
     public String toString() {
