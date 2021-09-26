@@ -82,7 +82,6 @@ public class Point implements Comparable<Point> {
             return 1;
     }
 
-
     // return string representation of this point
     public String toString() {
         /* DO NOT MODIFY */
